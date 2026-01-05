@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* سیستم دیزاین محافل قرآنی کودکان
+   رنگ‌بندی: سبز روشن، سفید، طلایی
+   الهام از فضای معنوی و شاد کودکانه
+*/
+
+@layer base {
+  :root {
+    /* رنگ‌های اصلی */
+    --background: 140 25% 98%;
+    --foreground: 140 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 140 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 30% 15%;
+
+    /* سبز اصلی */
+    --primary: 145 60% 42%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 145 55% 85%;
+    --primary-glow: 145 60% 55%;
+
+    /* طلایی */
+    --secondary: 43 85% 55%;
+    --secondary-foreground: 43 85% 15%;
+    --secondary-light: 43 80% 90%;
+
+    --muted: 140 15% 94%;
+    --muted-foreground: 140 10% 45%;
+
+    --accent: 43 75% 60%;
+    --accent-foreground: 43 85% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 145 60% 42%;
+
+    --radius: 0.75rem;
+
+    /* گرادیانت‌ها */
+    --gradient-primary: linear-gradient(135deg, hsl(145 60% 42%) 0%, hsl(145 55% 55%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 85% 55%) 0%, hsl(43 80% 65%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(140 25% 98%) 0%, hsl(145 40% 92%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(140 20% 97%) 100%);
+
+    /* سایه‌ها */
+    --shadow-soft: 0 4px 20px -4px hsl(145 60% 42% / 0.15);
+    --shadow-gold: 0 4px 20px -4px hsl(43 85% 55% / 0.25);
+    --shadow-card: 0 8px 30px -8px hsl(140 30% 20% / 0.1);
+
+    /* سایدبار */
+    --sidebar-background: 140 25% 97%;
+    --sidebar-foreground: 140 30% 25%;
+    --sidebar-primary: 145 60% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 145 40% 92%;
+    --sidebar-accent-foreground: 140 30% 20%;
+    --sidebar-border: 140 20% 90%;
+    --sidebar-ring: 145 60% 42%;
+  }
+
+  .dark {
+    --background: 140 25% 8%;
+    --foreground: 140 15% 95%;
+
+    --card: 140 20% 12%;
+    --card-foreground: 140 15% 95%;
+
+    --popover: 140 20% 12%;
+    --popover-foreground: 140 15% 95%;
+
+    --primary: 145 55% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 145 40% 25%;
+    --primary-glow: 145 55% 60%;
+
+    --secondary: 43 75% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 43 50% 20%;
+
+    --muted: 140 15% 18%;
+    --muted-foreground: 140 10% 65%;
+
+    --accent: 43 65% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 15% 22%;
+    --input: 140 15% 22%;
+    --ring: 145 55% 50%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(145 55% 40%) 0%, hsl(145 50% 50%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 75% 45%) 0%, hsl(43 70% 55%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(140 25% 8%) 0%, hsl(145 30% 12%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(140 20% 12%) 0%, hsl(140 18% 15%) 100%);
+
+    --shadow-soft: 0 4px 20px -4px hsl(145 55% 50% / 0.2);
+    --shadow-gold: 0 4px 20px -4px hsl(43 75% 50% / 0.3);
+    --shadow-card: 0 8px 30px -8px hsl(0 0% 0% / 0.3);
+
+    --sidebar-background: 140 20% 10%;
+    --sidebar-foreground: 140 15% 90%;
+    --sidebar-primary: 145 55% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 18% 18%;
+    --sidebar-accent-foreground: 140 15% 90%;
+    --sidebar-border: 140 15% 20%;
+    --sidebar-ring: 145 55% 50%;
+  }
+}
+
+@layer components {
+  .border-border {
+    border: 1px solid hsl(var(--border));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] font-vazir antialiased;
+  }
+
+  /* انیمیشن‌های سفارشی */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(145 60% 42% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(145 60% 42% / 0.5); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@layer utilities {
+  .font-vazir {
+    font-family: 'Vazirmatn', system-ui, sans-serif;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* تایپوگرافی فارسی */
+  .text-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight;
+  }
+
+  .text-headline {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-snug;
+  }
+
+  .text-title {
+    @apply text-xl md:text-2xl font-semibold leading-normal;
+  }
+
+  .text-body-lg {
+    @apply text-lg leading-relaxed;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* کارت‌ها و کانتینرها */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-soft;
+  }
+
+  /* دکمه‌ها */
+  .btn-shine {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-shine::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full;
+    transition: transform 0.6s ease;
+  }
+
+  .btn-shine:hover::before {
+    @apply translate-x-full;
+  }
+}
