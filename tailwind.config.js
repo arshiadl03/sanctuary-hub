@@ -1,8 +1,14 @@
-import type { Config } from "tailwindcss";
+import { Config } from "tailwindcss";
 
+// حذف satisfies Config
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}"
+  ],
   prefix: "",
   theme: {
     container: {
@@ -13,12 +19,12 @@ export default {
         md: "768px",
         lg: "1024px",
         xl: "1280px",
-        "2xl": "1400px",
-      },
+        "2xl": "1400px"
+      }
     },
     extend: {
       fontFamily: {
-        vazir: ["Vazirmatn", "system-ui", "sans-serif"],
+        vazir: ["Vazirmatn", "system-ui", "sans-serif"]
       },
       colors: {
         border: "hsl(var(--border))",
@@ -134,4 +140,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+}

@@ -11,7 +11,7 @@ import {
 import { DashboardLayout } from "@/components/layout/DashboardLayout/DashboardLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import * as button from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext.jsx";
 import apiClient from "@/lib/apiClient.js";
 import { Helmet } from "react-helmet-async";

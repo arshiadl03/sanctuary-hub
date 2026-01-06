@@ -24,6 +24,7 @@ import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
 import apiClient from "@/lib/apiClient.js";
 import { Loader2, Plus, Pencil, Trash2, MapPin, Users } from "lucide-react";
+
 const statusLabels = {
   active: "فعال",
   inactive: "غیرفعال",
@@ -64,11 +65,11 @@ export default function ManageMahafil() {
   const fetchMahafil = async () => {
     setIsLoading(true);
     try {
-      const res = await apiClient.get('/mahfels');
+      const res = await apiClient.get("/mahfels");
       const data = res.data?.data || res.data || [];
       setMahafil(data);
     } catch (err) {
-      console.error('Error fetching mahfels:', err);
+      console.error("Error fetching mahfels:", err);
     } finally {
       setIsLoading(false);
     }
@@ -90,7 +91,7 @@ export default function ManageMahafil() {
     setEditingMahfil(null);
   };
 
-  const openEditDialog = (mahfil: Mahfil) => {
+  const openEditDialog = (mahfil) => {
     setEditingMahfil(mahfil);
     setForm({
       name: mahfil.name,
@@ -132,7 +133,7 @@ export default function ManageMahafil() {
         await apiClient.put(`/mahfels/${editingMahfil.id}`, mahfilData);
         toast.success("محفل با موفقیت ویرایش شد");
       } else {
-        await apiClient.post('/mahfels', mahfilData);
+        await apiClient.post("/mahfels", mahfilData);
         toast.success("محفل با موفقیت ایجاد شد");
       }
 
@@ -150,10 +151,10 @@ export default function ManageMahafil() {
     if (!confirm("آیا از حذف این محفل اطمینان دارید؟")) return;
     try {
       await apiClient.delete(`/mahfels/${id}`);
-      toast.success('محفل حذف شد');
+      toast.success("محفل حذف شد");
       fetchMahafil();
     } catch (err) {
-      toast.error('خطا در حذف محفل');
+      toast.error("خطا در حذف محفل");
     }
   };
 
@@ -167,9 +168,7 @@ export default function ManageMahafil() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-foreground">مدیریت محافل</h1>
-              <p className="text-muted-foreground mt-1">
-                ایجاد، ویرایش و مدیریت محافل قرآنی
-              </p>
+              <p className="text-muted-foreground mt-1">ایجاد، ویرایش و مدیریت محافل قرآنی</p>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={(open) => {
               setIsDialogOpen(open);
@@ -257,7 +256,7 @@ export default function ManageMahafil() {
                       <Label>جنسیت</Label>
                       <Select
                         value={form.gender}
-                        onValueChange={(val) => setForm({ ...form, gender: val as MahfilGender })}
+                        onValueChange={(val) => setForm({ ...form, gender: val })}
                       >
                         <SelectTrigger>
                           <SelectValue />
@@ -304,7 +303,7 @@ export default function ManageMahafil() {
                       <Label>وضعیت</Label>
                       <Select
                         value={form.status}
-                        onValueChange={(val) => setForm({ ...form, status: val as MahfilStatus })}
+                        onValueChange={(val) => setForm({ ...form, status: val })}
                       >
                         <SelectTrigger>
                           <SelectValue />
