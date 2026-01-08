@@ -119,18 +119,6 @@
     --sidebar-border: 140 15% 20%;
     --sidebar-ring: 145 55% 50%;
   }
-}
-
-@layer components {
-  .border-border {
-    border: 1px solid hsl(var(--border));
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
 
   html {
     direction: rtl;
@@ -158,36 +146,24 @@
   }
 
   @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
+
+@layer components {
+  .border-border {
+    border: 1px solid hsl(var(--border));
   }
 }
 
@@ -196,64 +172,25 @@
     font-family: 'Vazirmatn', system-ui, sans-serif;
   }
 
-  .gradient-primary {
-    background: var(--gradient-primary);
-  }
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-gold { background: var(--gradient-gold); }
+  .gradient-hero { background: var(--gradient-hero); }
+  .gradient-card { background: var(--gradient-card); }
 
-  .gradient-gold {
-    background: var(--gradient-gold);
-  }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-card { box-shadow: var(--shadow-card); }
 
-  .gradient-hero {
-    background: var(--gradient-hero);
-  }
-
-  .gradient-card {
-    background: var(--gradient-card);
-  }
-
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
-  }
-
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
+  .animate-float { animation: float 3s ease-in-out infinite; }
   .animate-shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      hsl(0 0% 100% / 0.4),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.4), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s linear infinite;
   }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scale-in 0.4s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    animation: slide-in-right 0.5s ease-out forwards;
-  }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+  .animate-scale-in { animation: scale-in 0.4s ease-out forwards; }
+  .animate-slide-in-right { animation: slide-in-right 0.5s ease-out forwards; }
 
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
@@ -262,54 +199,25 @@
   .delay-500 { animation-delay: 500ms; }
 
   /* تایپوگرافی فارسی */
-  .text-display {
-    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight;
-  }
-
-  .text-headline {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-snug;
-  }
-
-  .text-title {
-    @apply text-xl md:text-2xl font-semibold leading-normal;
-  }
-
-  .text-body-lg {
-    @apply text-lg leading-relaxed;
-  }
-
-  .text-body {
-    @apply text-base leading-relaxed;
-  }
-
-  .text-caption {
-    @apply text-sm text-muted-foreground;
-  }
+  .text-display { @apply text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight; }
+  .text-headline { @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-snug; }
+  .text-title { @apply text-xl md:text-2xl font-semibold leading-normal; }
+  .text-body-lg { @apply text-lg leading-relaxed; }
+  .text-body { @apply text-base leading-relaxed; }
+  .text-caption { @apply text-sm text-muted-foreground; }
 
   /* کارت‌ها و کانتینرها */
-  .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl;
-  }
-
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
-  }
-
-  .hover-glow {
-    @apply transition-all duration-300 hover:shadow-soft;
-  }
+  .glass-card { @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl; }
+  .hover-lift { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg; }
+  .hover-glow { @apply transition-all duration-300 hover:shadow-soft; }
 
   /* دکمه‌ها */
-  .btn-shine {
-    @apply relative overflow-hidden;
-  }
-
+  .btn-shine { @apply relative overflow-hidden; }
   .btn-shine::before {
     content: '';
     @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full;
     transition: transform 0.6s ease;
   }
-
   .btn-shine:hover::before {
     @apply translate-x-full;
   }
